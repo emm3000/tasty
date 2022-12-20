@@ -13,4 +13,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "tasty"
-include ':app'
+include(":app")
+include(":data")
+include(":domain")
