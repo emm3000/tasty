@@ -36,8 +36,6 @@ android {
 }
 
 dependencies {
-    val koinVersion = "3.3.0"
-
 
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.5.1")
@@ -48,6 +46,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
     implementation(project(":data"))
     implementation(project(":domain"))
-    implementation("io.insert-koin:koin-android:$koinVersion")
-
+    implementation("io.insert-koin:koin-android:3.3.1")
 }
