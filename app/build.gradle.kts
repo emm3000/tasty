@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-kapt")
 }
 
 android {
@@ -33,6 +35,11 @@ android {
         jvmTarget = "1.8"
     }
 
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
 }
 
 dependencies {
@@ -46,5 +53,15 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
     implementation(project(":data"))
     implementation(project(":domain"))
+
+    // Koin
     implementation("io.insert-koin:koin-android:3.3.1")
+
+    // Navigation component
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+
+    // Coil
+    implementation("io.coil-kt:coil:2.2.2")
+
 }

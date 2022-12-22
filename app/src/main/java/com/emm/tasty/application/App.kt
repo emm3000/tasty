@@ -1,10 +1,10 @@
-package com.emm.application
+package com.emm.tasty.application
 
 import android.app.Application
 import com.emm.data.di.dataSourceModule
 import com.emm.data.di.networkModule
 import com.emm.data.di.repositoryModule
-import com.emm.di.viewModelModule
+import com.emm.tasty.di.viewModelModule
 import com.emm.domain.di.useCaseModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

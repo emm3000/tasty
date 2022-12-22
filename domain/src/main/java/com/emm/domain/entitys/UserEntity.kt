@@ -1,6 +1,6 @@
 package com.emm.domain.entitys
 
-data class UserModel(
+data class UserEntity(
     val completed: Boolean = false,
     val id: Int = 0,
     val title: String = "",

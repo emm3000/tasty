@@ -1,6 +1,6 @@
 package com.emm.data.source.response
 
-import com.emm.domain.entitys.UserModel
+import com.emm.domain.entitys.UserEntity
 
 data class UserResponse(
     val completed: Boolean,
@@ -9,8 +9,8 @@ data class UserResponse(
     val userId: Int
 )
 
-fun UserResponse.toDomainModel(): UserModel {
-    return UserModel(
+fun UserResponse.toDomainModel(): UserEntity {
+    return UserEntity(
         completed = completed,
         id = id,
         title = title,
