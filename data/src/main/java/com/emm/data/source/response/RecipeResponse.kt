@@ -21,11 +21,11 @@ fun List<RecipeResponse>.toDomainEntity(): List<RecipeEntity> {
 private fun RecipeResponse.toDomainEntity(): RecipeEntity {
     return RecipeEntity(
         id = id,
-        ingredients = ingredients.shuffled(),
+        ingredients = ingredients,
         latitude = latitude,
         longitude = longitude,
         portions = portions,
-        preparation = preparation.shuffled(),
+        preparation = preparation,
         time = time,
         title = title,
         urlImage = urlImage

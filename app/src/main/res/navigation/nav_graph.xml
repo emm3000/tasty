@@ -19,8 +19,13 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.emm.tasty.fragments.DetailFragment"
+        android:name="com.emm.tasty.fragments.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail"
-        />
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="recipeModel"
+            app:argType="com.emm.tasty.models.RecipeModel"
+            app:nullable="true"
+            />
+    </fragment>
 </navigation>

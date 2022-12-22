@@ -5,6 +5,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.emm.tasty.adapters.RecipeAdapter
+import com.emm.tasty.adapters.SimpleTextAdapter
 import com.emm.tasty.models.RecipeModel
 
 @BindingAdapter("app:url")
@@ -14,17 +15,19 @@ fun setImageViewUrl(view: ImageView, url: String?) {
             crossfade(true)
             crossfade(1000)
         }
-
     }
 }
 
 @BindingAdapter("app:recipeList")
 fun setRecipeListAdapter(rv: RecyclerView, items: List<RecipeModel>?) {
-    (rv.adapter as? RecipeAdapter)?.submitList(items ?: emptyList())
-        ?: run {
-            rv.adapter = RecipeAdapter().apply {
-                submitList(items ?: emptyList())
-            }
-        }
+    items?.let {
+        (rv.adapter as? RecipeAdapter)?.submitList(it)
+    }
+}
 
+@BindingAdapter("app:detailsList")
+fun setDetailListAdapter(rv: RecyclerView, items: List<String>?) {
+    items?.let {
+        rv.adapter = SimpleTextAdapter(it)
+    }
 }

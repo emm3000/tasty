@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.emm.domain.entitys.RecipeEntity
 import com.emm.domain.usecases.GetRecipeListUseCase
 import com.emm.domain.utils.ResultState
+import com.emm.tasty.models.RecipeModel
 import com.emm.tasty.models.toUIModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -50,7 +51,7 @@ class HomeViewModel(
 
         _homeViewState.update { currentState ->
             currentState.copy(
-                recipeListFilter = currentState.originalRecipeList.filter { it.id.toString() == text }
+                recipeListFilter = currentState.originalRecipeList?.filter { it.id.toString() == text }
             )
         }
     }

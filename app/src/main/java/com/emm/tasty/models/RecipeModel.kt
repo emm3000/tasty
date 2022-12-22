@@ -1,7 +1,10 @@
 package com.emm.tasty.models
 
+import android.os.Parcelable
 import com.emm.domain.entitys.RecipeEntity
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class RecipeModel(
     val id: Int,
     val ingredients: List<String>,
@@ -12,7 +15,7 @@ data class RecipeModel(
     val time: String,
     val title: String,
     val urlImage: String
-)
+) : Parcelable
 
 fun List<RecipeEntity>.toUIModel(): List<RecipeModel> {
     return map(RecipeEntity::toUIModel)
@@ -21,11 +24,11 @@ fun List<RecipeEntity>.toUIModel(): List<RecipeModel> {
 private fun RecipeEntity.toUIModel(): RecipeModel {
     return RecipeModel(
         id = id,
-        ingredients = ingredients.shuffled(),
+        ingredients = ingredients,
         latitude = latitude,
         longitude = longitude,
         portions = portions,
-        preparation = preparation.shuffled(),
+        preparation = preparation,
         time = time,
         title = title,
         urlImage = urlImage

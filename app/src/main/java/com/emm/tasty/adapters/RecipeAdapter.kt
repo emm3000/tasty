@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.emm.tasty.databinding.ItemRecipeBinding
 import com.emm.tasty.models.RecipeModel
 
-class RecipeAdapter : ListAdapter<RecipeModel, RecipeAdapter.ViewHolder>(DIFF_CALLBACK) {
+class RecipeAdapter(
+    private val listener: (RecipeModel) -> Unit
+) : ListAdapter<RecipeModel, RecipeAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -24,6 +26,7 @@ class RecipeAdapter : ListAdapter<RecipeModel, RecipeAdapter.ViewHolder>(DIFF_CA
     inner class ViewHolder(val binding: ItemRecipeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: RecipeModel) {
             binding.recipeModel = recipe
+            binding.root.setOnClickListener { listener.invoke(recipe) }
         }
     }
 
