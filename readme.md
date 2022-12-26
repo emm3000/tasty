@@ -6,8 +6,6 @@ En la capa de presentación se usa el patrón MVVM, para separar la lógica de n
 
 ---
 
-![me]("https://developer.android.com/static/topic/libraries/architecture/images/mad-arch-overview-ui.png")
-
 ## Data Layer - Repository
 
 Se usa este componente como mediador entre las diferentes fuentes de datos `DATA-SOURCE` (fuentes remota, preferencias locales, base de datos, etc) y los casos de uso donde se manejan la lógica de negocio.
