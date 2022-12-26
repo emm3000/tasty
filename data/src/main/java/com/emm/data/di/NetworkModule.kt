@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit
 
 private const val EMULATOR_URL = "http://10.0.2.2:3000/api/"
 private const val LOCAL_URL = "http://192.168.0.28:3000/api/"
+private const val BASE_URL = "https://recipes-production-0f52.up.railway.app/api/"
 
 val networkModule = module {
     single { provideOkHttpClient() }
@@ -23,7 +24,7 @@ val networkModule = module {
 
 private fun provideRetrofit(okHttpClient: OkHttpClient, baseURL: String): Retrofit {
     return Retrofit.Builder()
-        .baseUrl(baseURL)
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
         .build()
