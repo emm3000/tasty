@@ -61,7 +61,7 @@ class HomeViewModel(
         executeGetRecipeListUseCase(params)
     }
 
-    private fun getRecipeListPagination() {
+    fun getRecipeListPagination() {
         val params = GetRecipeListUseCase.InputParams(
             page = 0,
         )
