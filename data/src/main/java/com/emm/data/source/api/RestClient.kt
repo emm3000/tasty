@@ -1,16 +1,25 @@
 package com.emm.data.source.api
 
-import com.emm.data.source.response.RecipeResponse
-import com.emm.data.source.response.UserResponse
+import com.emm.data.constants.DataConstants.API_PLACE_BASE_URL
+import com.emm.data.source.response.RecipeListResponse
+import com.emm.data.source.response.PlaceByRecipeResponse
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
+import retrofit2.http.QueryMap
 
 interface RestClient {
 
-    @GET("todos/1")
-    suspend fun getUser(): Response<UserResponse>
+    @GET("recipes")
+    suspend fun recipeList(
+        @Query("take") take: Int,
+        @Query("page") page: Int,
+        @Query("filter") filter: String
+    ): Response<RecipeListResponse>
 
-    @GET("https://run.mocky.io/v3/4babaea2-de0c-4daa-8beb-9201ec2e1db2")
-    suspend fun recipeList(): Response<List<RecipeResponse>>
+    @GET(API_PLACE_BASE_URL)
+    suspend fun getMarkersByRecipe(
+        @QueryMap(encoded = true) query: Map<String, String>
+    ): Response<PlaceByRecipeResponse>
 
 }

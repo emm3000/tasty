@@ -1,8 +1,15 @@
 <resources>
     <string name="app_name">tasty</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="content_description_recipe">recipe</string>
-    <string name="tv_search_hint">Buscar por receta por nombre, ingredientes</string>
+    <string name="tv_search_hint">Buscar por receta, nombre o ingredientes</string>
     <string name="tv_home_title">Tasty</string>
+    <string name="tv_no_results">Sin resultados</string>
+    <string name="tv_preparation_lbl">Modo de preparación</string>
+    <string name="tv_ingredients_lbl">Ingredientes</string>
+    <string name="tv_map">BUSCAR RESTAURANTES</string>
+    <string name="tv_street_lbl">Dirección:</string>
+    <string name="tv_name_lbl">Nombre:</string>
+    <string name="tv_lat_lbl">Latitud:</string>
+    <string name="tv_lon_lbl">Longitud:</string>
 </resources>

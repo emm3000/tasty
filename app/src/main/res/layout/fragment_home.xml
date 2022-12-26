@@ -6,9 +6,11 @@
     >
 
     <data>
+
         <import type="android.view.View" />
+
         <variable
-            name="viewModel"
+            name="homeViewModel"
             type="com.emm.tasty.fragments.home.HomeViewModel"
             />
     </data>
@@ -24,8 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/tv_home_title"
             android:fontFamily="@font/lato_black"
+            android:text="@string/tv_home_title"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,8 +60,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_regular"
                 android:inputType="text"
-                android:text="@={viewModel.searchTextState}"
                 android:maxLines="1"
+                android:text="@={homeViewModel.searchTextState}"
                 android:textColor="@color/new_primary"
                 android:textSize="14sp"
                 />
@@ -71,32 +73,41 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="12dp"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:clipChildren="false"
             android:clipToPadding="false"
+            android:orientation="vertical"
             android:paddingBottom="20dp"
-            app:recipeList="@{viewModel.homeViewState.recipeListFilter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputLayout"
+            app:recipeList="@{homeViewModel.homeViewState.recipeList}"
             tools:itemCount="4"
             tools:listitem="@layout/item_recipe"
             />
 
-        <ProgressBar
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:layout_marginTop="12dp"
-            android:visibility="@{viewModel.homeViewState.showLoading ? View.VISIBLE : View.GONE}"
-            android:indeterminateTint="@color/new_primary"
+            android:layout_marginTop="10dp"
+            android:text="@string/tv_no_results"
+            android:visibility="@{homeViewModel.homeViewState.recipeList.size == 0 ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputLayout"
+            app:layout_constraintTop_toTopOf="@+id/rvRecipe"
             />
 
+        <include
+            android:id="@+id/qwer"
+            layout="@layout/view_loading"
+            android:visibility="@{homeViewModel.homeViewState.showLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

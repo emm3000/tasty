@@ -1,5 +1,15 @@
 package com.emm.domain.entitys
 
+data class RecipePaginationDataEntity(
+    val data: List<RecipeEntity>,
+    val total: Int,
+    val page: Int,
+    val limit: Int,
+    val pages: Int,
+    val hasNext: Boolean,
+    val hasPrev: Boolean
+)
+
 data class RecipeEntity(
     val id: Int,
     val ingredients: List<String>,

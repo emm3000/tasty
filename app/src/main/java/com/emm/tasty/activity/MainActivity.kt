@@ -1,23 +1,23 @@
-package com.emm.tasty
+package com.emm.tasty.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.updateLayoutParams
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.emm.tasty.activity.MainViewModel
+import com.emm.tasty.R
 import com.emm.tasty.databinding.ActivityMainBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val vm: MainViewModel by viewModel()
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var navController: NavController
@@ -44,13 +44,17 @@ class MainActivity : AppCompatActivity() {
     private fun setStatusBarTransparent() {
         resetInset()
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        window.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.colorb50C1222)
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.colorb50C1222)
+        changeStatusBarColorIcons(false)
     }
 
     private fun setStatusBar() {
-        WindowCompat.setDecorFitsSystemWindows(window, true)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.purple_700)
         setDefaultInset()
+        WindowCompat.setDecorFitsSystemWindows(window, true)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.white)
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.white)
+        changeStatusBarColorIcons(true)
     }
 
     private fun resetInset() {
@@ -69,7 +73,12 @@ class MainActivity : AppCompatActivity() {
         binding.rooView.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             bottomMargin = 0
         }
+    }
 
+    private fun changeStatusBarColorIcons(isDark: Boolean) {
+        val decorView: View = window.decorView
+        val wic = WindowInsetsControllerCompat(window, decorView)
+        wic.isAppearanceLightStatusBars = isDark
     }
 
 }

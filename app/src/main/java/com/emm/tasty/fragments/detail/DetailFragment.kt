@@ -34,6 +34,9 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.ivBack.setOnClickListener { findNavController().popBackStack() }
+        binding.buttonMap.setOnClickListener {
+            findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToMapFragment(args.recipeModel?.title))
+        }
     }
 
 }

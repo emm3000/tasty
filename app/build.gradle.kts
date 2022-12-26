@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -6,13 +9,17 @@ plugins {
     id("kotlin-parcelize")
 }
 
+val prop = Properties().apply {
+    load(FileInputStream(File(rootProject.rootDir, "keystore.properties")))
+}
+
 android {
     namespace = "com.emm.tasty"
     compileSdk = 33
 
     defaultConfig {
         applicationId = "com.emm.tasty"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -20,10 +27,26 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        getByName("debug") {
+            keyAlias = prop.getProperty("keyAlias")
+            keyPassword = prop.getProperty("keyPassword")
+            storeFile = file(prop.getProperty("storeFile"))
+            storePassword = prop.getProperty("storePassword")
+        }
+    }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+        getByName("debug") {
+            isDebuggable = true
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("debug")
+            resValue ("string","MAPS_KEY", prop.getProperty("MAPS_API_KEY"))
         }
     }
 
@@ -64,5 +87,11 @@ dependencies {
 
     // Coil
     implementation("io.coil-kt:coil:2.2.2")
+
+    // Map
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
+    implementation("com.google.maps.android:maps-ktx:3.0.0")
+    implementation("com.google.maps.android:maps-utils-ktx:3.0.0")
+
 
 }

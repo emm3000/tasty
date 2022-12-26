@@ -27,5 +27,19 @@
             app:argType="com.emm.tasty.models.RecipeModel"
             app:nullable="true"
             />
+        <action
+            android:id="@+id/action_detailFragment_to_mapFragment"
+            app:destination="@id/mapFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.emm.tasty.fragments.map.MapFragment"
+        android:label="MapFragment" >
+        <argument
+            android:name="keyword"
+            app:argType="string"
+            app:nullable="true"
+            />
     </fragment>
 </navigation>

@@ -6,6 +6,7 @@
     >
 
     <data>
+
         <variable
             name="detailViewModel"
             type="com.emm.tasty.fragments.detail.DetailViewModel"
@@ -23,24 +24,29 @@
             android:layout_width="match_parent"
             android:layout_height="215dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/test_img"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:url="@{detailViewModel.detailState.urlImage}"
+            tools:src="@drawable/test_img"
             />
 
         <ImageView
             android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_back"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_circular"
+            android:backgroundTint="@color/colorb50C1222"
+            android:padding="4dp"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             />
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="-20dp"
@@ -62,19 +68,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{detailViewModel.detailState.title}"
-                    tools:text="Carapulcra de cerdo"
+                    android:textSize="@dimen/title_dimen"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Carapulcra de cerdo"
                     />
 
                 <ImageView
                     android:id="@+id/imageView5"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_hour"
                     android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_hour"
                     app:layout_constraintStart_toStartOf="@+id/textView3"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonMap"
                     app:tint="@color/new_primary"
                     />
 
@@ -82,20 +90,20 @@
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="1h 20m"
-                    android:text="@{detailViewModel.detailState.time}"
                     android:layout_marginStart="5dp"
+                    android:text="@{detailViewModel.detailState.time}"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView5"
                     app:layout_constraintStart_toEndOf="@+id/imageView5"
                     app:layout_constraintTop_toTopOf="@+id/imageView5"
+                    tools:text="1h 20m"
                     />
 
                 <ImageView
                     android:id="@+id/imageView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_person"
                     android:layout_marginStart="10dp"
+                    android:src="@drawable/ic_person"
                     app:layout_constraintBottom_toBottomOf="@+id/textView4"
                     app:layout_constraintStart_toEndOf="@+id/textView4"
                     app:layout_constraintTop_toTopOf="@+id/textView4"
@@ -107,11 +115,31 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    tools:text="4 porciones"
                     android:text="@{detailViewModel.detailState.portions}"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView6"
                     app:layout_constraintStart_toEndOf="@+id/imageView6"
                     app:layout_constraintTop_toTopOf="@+id/imageView6"
+                    tools:text="4 porciones"
+                    />
+
+                <TextView
+                    android:id="@+id/buttonMap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_rounded"
+                    android:foreground="@drawable/ripple_effect"
+                    android:gravity="center"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="7dp"
+                    android:textStyle="bold"
+                    android:text="@string/tv_map"
+                    android:textColor="@color/new_primary"
+                    app:drawableEndCompat="@drawable/ic_location"
+                    app:drawableTint="@color/new_primary"
+                    android:drawablePadding="5dp"
+                    app:layout_constraintStart_toStartOf="@+id/textView3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3"
                     />
 
                 <TextView
@@ -119,7 +147,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Ingredientes"
+                    android:text="@string/tv_ingredients_lbl"
+                    android:textSize="@dimen/subtitle_dimen"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/imageView5"
                     app:layout_constraintTop_toBottomOf="@+id/imageView5"
                     />
@@ -129,12 +159,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:nestedScrollingEnabled="true"
                     android:orientation="vertical"
+                    android:overScrollMode="never"
+                    app:detailsList="@{detailViewModel.detailState.ingredients}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:detailsList="@{detailViewModel.detailState.ingredients}"
-                    android:overScrollMode="never"
-                    android:nestedScrollingEnabled="true"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView6"
                     tools:itemCount="6"
@@ -146,7 +176,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Modo de preparación"
+                    android:text="@string/tv_preparation_lbl"
+                    android:textSize="@dimen/subtitle_dimen"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/recyclerView"
                     />
@@ -167,14 +199,6 @@
                     tools:itemCount="14"
                     tools:listitem="@layout/item_simple"
                     />
-
-<!--                <View-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/recyclerView2"-->
-<!--                    />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
