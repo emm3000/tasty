@@ -11,7 +11,7 @@ object Constants : KoinComponent {
         "location" to "d",
         "radius" to "1500",
         "type" to "restaurant",
-        "key" to "AIzaSyBPIDN1UJy71dSA4u8Y-Oczg-c3KHiFxp4",
+        "key" to keyMap,
         "language" to "es"
     )
 
