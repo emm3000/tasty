@@ -31,7 +31,7 @@ class MapViewModel(
         executeGetMarkersUseCase()
     }
 
-    private fun executeGetMarkersUseCase() {
+    fun executeGetMarkersUseCase() {
         val defaultLocation = "$DEFAULT_LATITUDE,$DEFAULT_LONGITUDE"
 
         getMarkersUseCase(keyword.orEmpty(), defaultLocation)

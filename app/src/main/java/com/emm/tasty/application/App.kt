@@ -6,6 +6,7 @@ import com.emm.data.di.networkModule
 import com.emm.data.di.repositoryModule
 import com.emm.tasty.di.viewModelModule
 import com.emm.domain.di.useCaseModule
+import com.emm.tasty.di.keysModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -25,6 +26,7 @@ class App : Application() {
                     useCaseModule,
                     repositoryModule,
                     dataSourceModule,
+                    keysModule
                 )
             )
         }

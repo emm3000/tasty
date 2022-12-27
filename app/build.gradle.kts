@@ -47,6 +47,7 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("debug")
             resValue ("string","MAPS_KEY", prop.getProperty("MAPS_API_KEY"))
+            resValue ("string","PLACE_API_KEY", prop.getProperty("PLACE_API_KEY"))
         }
     }
 

@@ -1,6 +1,11 @@
 package com.emm.domain.constants
 
-object Constants {
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+
+object Constants : KoinComponent {
+
+    private val keyMap: String by inject()
 
     val PLACE_QUERIES = mapOf(
         "location" to "d",

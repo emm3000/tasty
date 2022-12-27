@@ -32,7 +32,6 @@ class GetRecipeListUseCaseTest {
 
     @Test
     fun `verify that the first value of the use case is correct`() = runTest {
-
         val inputParams = GetRecipeListUseCase.InputParams(
             page = 1,
         )
@@ -46,7 +45,6 @@ class GetRecipeListUseCaseTest {
 
         Truth.assertThat(response.data.size).isEqualTo(0)
         Truth.assertThat(response.page).isEqualTo(inputParams.page)
-
     }
 
     @After

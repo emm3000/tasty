@@ -9,7 +9,6 @@ import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.RelaxedMockK
-import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
@@ -32,7 +31,6 @@ class HomeViewModelTest {
     private lateinit var homeViewModel: HomeViewModel
 
     @RelaxedMockK lateinit var getRecipeListUseCase: GetRecipeListUseCase
-
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
